@@ -1,6 +1,6 @@
 {
   "name":         "qutic-lx-centos",
-  "version":      "20180404.2",
+  "version":      "20180404.3",
   "description":  "qutic lx-centos image",
   "organization": "qutic development",
   "brand":        "Instance",

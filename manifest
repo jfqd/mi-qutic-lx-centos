@@ -1,7 +1,7 @@
 name="qutic-lx-centos"
 organization="qutic development"
 brand="Instance"
-version="20180404.2"
+version="20180404.3"
 description="qutic lx-centos image"
 homepage="https://github.com/jfqd/mi-qutic-lx-centos"
 users="root admin"

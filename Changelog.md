@@ -1,5 +1,9 @@
 # Changelog
 
+## 20180404.3
+
+* configure sendmail
+
 ## 20180404.2
 
 * update zabbix version
