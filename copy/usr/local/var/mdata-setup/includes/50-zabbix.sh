@@ -32,6 +32,9 @@ if mdata-get zabbix_server 1>/dev/null 2>&1; then
       -e "s|Hostname=Zabbix server|Hostname=${HOSTNAME}|" \
       /etc/zabbix/zabbix_agentd.conf
 
-  systemctl restart zabbix-agent
-  systemctl enable zabbix-agent
+  # disable zabbix systemd cause of issues
+  systemctl stop zabbix-agent || true
+  # and use old init.d
+  ln -nfs /etc/init.d/zabbix /etc/rc5.d/S20Zabbix || true
+  /etc/init.d/zabbix start || true
 fi

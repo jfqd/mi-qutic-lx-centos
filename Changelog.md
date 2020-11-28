@@ -3,6 +3,7 @@
 ## 20180404.3
 
 * configure sendmail
+* use old init.d for zabbix
 
 ## 20180404.2
 

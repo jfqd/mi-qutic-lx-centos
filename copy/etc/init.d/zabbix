@@ -1,0 +1,33 @@
+#!/bin/bash
+case "$1" in
+    start)
+    [ "$EUID" != "0" ] && exit 4
+    /usr/sbin/zabbix_agentd -c /etc/zabbix/zabbix_agentd.conf
+    rc=0
+    ;;
+  stop)
+    [ "$EUID" != "0" ] && exit 4
+    kill `cat /var/run/zabbix/zabbix_agentd.pid`
+    rm -f /var/run/zabbix/zabbix_agentd.pid
+    rc=0
+    ;;
+  status)
+    if [[ `ps auxwww |grep zabbix_agentd |grep -v grep |wc -l` -gt 0 ]]; then
+      echo "zabbix running...."
+      rc=0
+    else
+      echo "zabbix not running!"
+      rc=1
+    fi
+    ;;
+  restart|reload|force-reload)
+    $0 stop
+    $0 start
+    rc=$?
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|status|restart|reload|force-reload}"
+    exit 2
+esac
+
+exit $rc
