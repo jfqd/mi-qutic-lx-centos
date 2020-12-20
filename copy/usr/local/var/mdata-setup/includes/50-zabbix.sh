@@ -35,6 +35,7 @@ if mdata-get zabbix_server 1>/dev/null 2>&1; then
   # disable zabbix systemd cause of issues
   systemctl stop zabbix-agent || true
   # and use old init.d
-  ln -nfs /etc/init.d/zabbix /etc/rc5.d/S20Zabbix || true
-  /etc/init.d/zabbix start || true
+  sed -i \
+      -e "s|exit 0|/etc/init.d/zabbix start; exit 0|" \
+      /etc/rc.d/rc.local
 fi
