@@ -50,7 +50,7 @@ net.ipv6.conf.default.disable_ipv6 = 0
 EOF
 
 echo "IPV6INIT=yes" >> /etc/sysconfig/network
-sysctl -p
+# sysctl -p || true
 
 echo "* setup bootstrap startscript"
 touch /var/lib/bootstrap
