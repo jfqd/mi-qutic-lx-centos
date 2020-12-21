@@ -35,10 +35,12 @@ if mdata-get zabbix_server 1>/dev/null 2>&1; then
   # disable zabbix systemd cause of issues
   systemctl stop zabbix-agent || true
   # and use old init.d
+  echo "* Use old init.d for zabbix"
   sed -i \
       -e "s|exit 0|/etc/init.d/zabbix start; exit 0|" \
       /lib/smartdc/joyent_rc.local
-  # sed -i \
-  #     -e "s|exit 0|/etc/init.d/zabbix start; exit 0|" \
-  #     /etc/rc.d/rc.local
+  sed -i \
+      -e "s|exit 0|/etc/init.d/zabbix start; exit 0|" \
+      /etc/rc.local
+  /etc/init.d/zabbix start
 fi
