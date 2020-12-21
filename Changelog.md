@@ -4,6 +4,7 @@
 
 * configure sendmail
 * use old init.d for zabbix
+* allow ipv6 usage
 
 ## 20180404.2
 
