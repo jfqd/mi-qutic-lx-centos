@@ -41,6 +41,17 @@ cp /etc/skel/.bashrc /root/.bashrc
 source /root/.bashrc
 #locale-gen en_US.utf8
 
+echo "* Allow ipv6 network"
+cat >> /etc/sysctl.conf << EOF
+net.ipv6.conf.all.disable_ipv6 = 0
+net.ipv6.conf.default.disable_ipv6 = 0
+#net.ipv6.conf.eth0.disable_ipv6 = 0
+#net.ipv6.conf.lo.disable_ipv6 = 0
+EOF
+
+echo "IPV6INIT=yes" >> /etc/sysconfig/network
+sysctl -p
+
 echo "* setup bootstrap startscript"
 touch /var/lib/bootstrap
 systemctl daemon-reload
