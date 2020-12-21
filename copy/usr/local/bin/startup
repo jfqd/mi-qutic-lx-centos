@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# ensure ipv6 gateway
+if [[ -z `/bin/netstat -nr6 |grep "::/0"` ]]; then
+  if /native/usr/sbin/mdata-get ipv6_gateway 1>/dev/null 2>&1; then
+    GW=$(/native/usr/sbin/mdata-get ipv6_gateway)
+    /native/usr/sbin/route -p add -inet6 default ${GW} || true
+  else
+    echo "* No IPv6-Gateway defined"
+  fi
+  # if [[ -f /etc/inet/static_routes ]]; then
+  #   /native/usr/sbin/route add $(/bin/tail -n1 /etc/inet/static_routes)
+  # fi
+else
+  echo "* IPv6-Gateway already created"
+fi
+
+# start zabbix
+/etc/init.d/zabbix start &
+
+exit 0
