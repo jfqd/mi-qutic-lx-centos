@@ -37,5 +37,8 @@ if mdata-get zabbix_server 1>/dev/null 2>&1; then
   # and use old init.d
   sed -i \
       -e "s|exit 0|/etc/init.d/zabbix start; exit 0|" \
-      /etc/rc.d/rc.local
+      /lib/smartdc/joyent_rc.local
+  # sed -i \
+  #     -e "s|exit 0|/etc/init.d/zabbix start; exit 0|" \
+  #     /etc/rc.d/rc.local
 fi
