@@ -24,6 +24,7 @@
     "zabbix_pski":           {"type": "text", "description": "zabbix PSKIdentity"},
     "zabbix_psk":            {"type": "text", "description": "zabbix PSK"},
     "logstash_redis":        {"type": "text", "description": "ip addresses of the logstash redis nodes, seperated by comma and including redis-protocoll"},
-    "vfstab":                {"type": "text", "description": "nfs mountpoint for vfstab-file"}
+    "vfstab":                {"type": "text", "description": "nfs mountpoint for vfstab-file"},
+    "ipv6_gateway":          {"type": "text", "description": "ipv6-gateway address, like: 20ab:cdef::1"}
   }
 }
