@@ -5,6 +5,8 @@
 * configure sendmail
 * use old init.d for zabbix
 * allow ipv6 usage
+* add ipv6-gateway support
+* add startup-script option
 
 ## 20180404.2
 
